@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números Primos</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="number"></div>
+
+    <script>
+        const primes = [];
+        let currentNumber = 2;
+
+        function isPrime(num) {
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        function generateNextPrime() {
+            while (!isPrime(currentNumber)) {
+                currentNumber++;
+            }
+            primes.push(currentNumber);
+            return currentNumber++;
+        }
+
+        document.body.addEventListener("click", () => {
+            const numberDiv = document.getElementById("number");
+            const nextPrime = generateNextPrime();
+            numberDiv.textContent = nextPrime;
+        });
+    </script>
+</body>
+</html>
